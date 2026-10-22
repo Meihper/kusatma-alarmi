@@ -1,0 +1,45 @@
+name: Android APK Oluşturucu (Build APK)
+
+on:
+  push:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Kodu Çek (Checkout)
+        uses: actions/checkout@v4
+
+      - name: Java Kurulumu (Java 17)
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'zulu'
+          java-version: '17'
+
+      - name: Node.js Kurulumu
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Bağımlılıkları Yükle
+        run: npm install
+
+      - name: Capacitor Android Projesini Oluştur
+        run: |
+          npx cap add android || true
+          npx cap sync android
+
+      - name: Android APK'sını Derle (Gradle)
+        run: |
+          cd android
+          chmod +x gradlew
+          ./gradlew assembleDebug --stacktrace
+
+      - name: APK Dosyasını Yükle (Artifact)
+        uses: actions/upload-artifact@v4
+        with:
+          name: Kusatma-Alarmi-Android-APK
+          path: android/app/build/outputs/apk/debug/app-debug.apk
