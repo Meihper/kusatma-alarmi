@@ -1,0 +1,8 @@
+{
+  "appId": "com.erdem.kusatmaalarmi",
+  "appName": "Kuşatma Alarmı",
+  "webDir": "www",
+  "server": {
+    "androidScheme": "https"
+  }
+}

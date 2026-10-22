@@ -1,0 +1,21 @@
+{
+  "short_name": "Kuşatma Alarmı",
+  "name": "Kuşatma Alarmı | Kahvaltı Kalesi",
+  "icons": [
+    {
+      "src": "https://emojicdn.elk.sh/🥞?size=192",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "https://emojicdn.elk.sh/🥞?size=512",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "./index.html",
+  "background_color": "#fffbeb",
+  "theme_color": "#f97316",
+  "display": "standalone",
+  "orientation": "portrait"
+}
